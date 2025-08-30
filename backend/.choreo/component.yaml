@@ -1,32 +1,15 @@
-# +required The configuration file schema version
-schemaVersion: 1.2
-
-# +optional Incoming connection details for the component
+schemaVersion: "1.2"
 endpoints:
-  # +required Unique name for the endpoint.
-  # This name will be used when generating the managed API
-  - name: rest-api-be2
-    # +optional Display name for the endpoint.
-    displayName: REST API
-    # +required Service section has the user service endpoint details
-    service:
-      # +optional Context (base path) of the API that gets exposed via the endpoint.
-      basePath: /
-      # +required Numeric port value that gets exposed via the endpoint
-      port: 8000
-    # +required Type of traffic that the endpoint is accepting.
-    # Allowed values: REST, GraphQL, WS, GRPC, TCP, UDP.
-    type: REST
-    # +optional Network level visibilities of the endpoint.
-    # Accepted values: Project|Organization|Public(Default).
-    networkVisibilities: 
-      - Project
-      - Public
-# +optional Outgoing connection details for the component.
+    - name: rest-api-be2
+      displayName: REST API
+      service:
+        basePath: /
+        port: 8000
+      type: REST
+      networkVisibilities:
+        - Project
+        - Public
 dependencies:
-  # +optional Defines the connection references from the Internal Marketplace.
-  connectionReferences:
-    # +required Name of the connection.
+    connectionReferences:
     - name: openai-connection
-      # +required service identifier of the dependent component.
       resourceRef: thirdparty:openai/v1
